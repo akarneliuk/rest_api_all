@@ -1,0 +1,26 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+
+# Setting vars for this App 
+
+  vars:
+      destination_host: localhost
+      destination_port: 2375
+  
+# Running tasks
+
+  tasks:
+      - name: REST API CALL / GET
+        uri:
+            url: http://{{ destination_host }}:{{ destination_port }}/{{ resource_path }}
+            method: GET
+        register: rest_get
+        vars:
+            resource_path: containers/json?all=1
+
+      - name: DEBUG / GOT INFO
+        debug:
+            msg: "{{ rest_get.json }}"
+...
