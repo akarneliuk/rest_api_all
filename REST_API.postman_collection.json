@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "3bc0309c-afd3-482f-9a03-c2bf4e183178",
+		"name": "REST API cheat sheats",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:2375/containers/json?all=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2375/containers/json?all=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2375",
+					"path": [
+						"containers",
+						"json"
+					],
+					"query": [
+						{
+							"key": "all",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Simple GET request with optional parameters"
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{netbox_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}",
+					"protocol": "http",
+					"host": [
+						"{{destination_host}}"
+					],
+					"port": "{{destination_port}}",
+					"path": [
+						"{{resource_path}}"
+					]
+				},
+				"description": "Parametrized GET request with Authorization header"
+			},
+			"response": []
+		}
+	]
+}
