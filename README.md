@@ -18,7 +18,7 @@ Python 3.7 version was used, and all the tests were performed in the virtual env
 
 ## Execution (e.g. the simplest GET request):
 1) For Ansible playbooks: `ansible-playbook rest_get.yml -i ansible_hosts.yml`
-2) For Bash: `./rest_get.py`
+2) For Bash: `./rest_get.sh`
 3) For Postman: import proper Postman collection and use it.
 4) For Python: `python rest_get.py` from the virtual environment context.
 For further details read the official articles at http://karneliuk.com/tag/rest-api/.
