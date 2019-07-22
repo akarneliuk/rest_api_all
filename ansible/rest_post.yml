@@ -1,0 +1,28 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+
+# Setting vars for this App 
+
+  vars:
+      destination_host: localhost
+      destination_port: 2375
+  
+# Running tasks
+
+  tasks:
+      - name: REST API CALL / POST
+        uri:
+            url: http://{{ destination_host }}:{{ destination_port }}/{{ resource_path }}
+            method: POST
+        register: rest_post
+        ignore_errors: yes
+        vars:
+            resource_path: containers/dcf_dhcp/kill
+
+      - name: DEBUG / GOT INFO
+        debug:
+            msg: "{{ rest_post }}"
+        when: rest_post.status == 204
+...

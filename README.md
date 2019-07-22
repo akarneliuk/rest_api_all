@@ -1,6 +1,10 @@
 # REST API cheat sheats
 This repo is crated as a source for the REST API blogpost series on the http://karneliuk.com. It intends to cover the interaction with the various applications via REST API. The primary focus is the network automation and programmability, as all the recent topics on the http://karneliuk.com.
 
+## Implemented requests
+- GET
+- POST
+
 ## Covered tools
 - Ansible (2.8)
 - Bash (4.2)

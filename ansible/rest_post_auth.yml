@@ -1,0 +1,38 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+
+# Setting vars for this App 
+
+  vars:
+      destination_host: localhost
+      destination_port: 32768
+      netbox_token: 0123456789abcdef0123456789abcdef01234567
+  
+# Running tasks
+
+  tasks:
+      - name: REST API CALL / POST
+        uri:
+            url: http://{{ destination_host }}:{{ destination_port }}/{{ resource_path }}
+            method: POST
+            headers:
+                Authorization: "Token {{ netbox_token }}"
+            body_format: json
+            body:
+                name: de-test-spine-333
+                device_type: 3
+                device_role: 3
+                site: 1
+                status: 1
+        ignore_errors: yes
+        register: rest_post
+        vars:
+            resource_path: api/dcim/devices/
+
+      - name: DEBUG / GOT INFO
+        debug:
+            msg: "{{ rest_post.json }}"
+        when: rest_post.status ==  201
+...

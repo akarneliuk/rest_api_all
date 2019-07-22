@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+
+# Setting vars for this App 
+
+  vars:
+      destination_host: localhost
+      destination_port: 32768
+      netbox_token: 0123456789abcdef0123456789abcdef01234567
+  
+# Running tasks
+
+  tasks:
+      - name: REST API CALL / DELETE
+        uri:
+            url: http://{{ destination_host }}:{{ destination_port }}/{{ resource_path }}{{ id }}
+            method: DELETE
+            headers:
+                Authorization: "Token {{ netbox_token }}"
+        ignore_errors: yes
+        register: rest_delete
+        vars:
+            resource_path: api/dcim/devices/
+            id: 17/
+
+      - name: DEBUG / GOT INFO
+        debug:
+            msg: "{{ rest_delete }}"
+        when: rest_delete.status == 204
+...
