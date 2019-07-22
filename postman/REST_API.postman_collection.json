@@ -61,6 +61,86 @@
 				"description": "Parametrized GET request with Authorization header"
 			},
 			"response": []
+		},
+		{
+			"name": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}/{{container_name}}/kill",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}/{{container_name}}/start",
+					"protocol": "http",
+					"host": [
+						"{{destination_host}}"
+					],
+					"port": "{{destination_port}}",
+					"path": [
+						"{{resource_path}}",
+						"{{container_name}}",
+						"start"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{netbox_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"de-test-spine-333\",\n\t\"device_type\": 3,\n\t\"device_role\": 3,\n\t\"site\": 1,\n\t\"status\": 1\n}"
+				},
+				"url": {
+					"raw": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}",
+					"protocol": "http",
+					"host": [
+						"{{destination_host}}"
+					],
+					"port": "{{destination_port}}",
+					"path": [
+						"{{resource_path}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}{{ID}}",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{netbox_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}{{ID}}",
+					"protocol": "http",
+					"host": [
+						"{{destination_host}}"
+					],
+					"port": "{{destination_port}}",
+					"path": [
+						"{{resource_path}}{{ID}}"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
