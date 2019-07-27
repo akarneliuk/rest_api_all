@@ -24,7 +24,7 @@ def rest_api_post(active_url, active_port, active_resource,
                     'device_type': 3, 
                     'device_role': 3, 
                     'site': 1, 
-                    'status': 1
+                    'status': 2
                 }
 
     rest_response = requests.post(url=resource_path, 

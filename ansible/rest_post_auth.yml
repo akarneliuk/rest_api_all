@@ -25,7 +25,7 @@
                 device_type: 3
                 device_role: 3
                 site: 1
-                status: 1
+                status: 2
         ignore_errors: yes
         register: rest_post
         vars:

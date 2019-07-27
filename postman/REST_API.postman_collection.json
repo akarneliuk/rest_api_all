@@ -101,7 +101,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"de-test-spine-333\",\n\t\"device_type\": 3,\n\t\"device_role\": 3,\n\t\"site\": 1,\n\t\"status\": 1\n}"
+					"raw": "{\n\t\"name\": \"de-test-spine-333\",\n\t\"device_type\": 3,\n\t\"device_role\": 3,\n\t\"site\": 1,\n\t\"status\": 2\n}"
 				},
 				"url": {
 					"raw": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}",
