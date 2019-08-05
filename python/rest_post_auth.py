@@ -13,10 +13,10 @@ netbox_token = '0123456789abcdef0123456789abcdef01234567'
 def rest_api_post(active_url, active_port, active_resource,
                   active_token):
 
-    resource_path = "http://%s:%s/%s" % (active_url, active_port, 
-                                         active_resource)
+    resource_path = "http://{}:{}/{}".format(active_url, active_port, 
+                                             active_resource)
     all_headers = {
-                      'Authorization': 'Token %s' % active_token,
+                      'Authorization': 'Token {}'.format(active_token),
                       'Content-Type': 'application/json'
                   }
     data_body = {

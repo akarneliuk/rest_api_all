@@ -12,10 +12,10 @@ action = 'kill'
 # Functions
 def rest_api_post(active_url, active_port, active_resource,
                   active_container, active_action):
-    resource_path = "http://%s:%s/%s/%s/%s" % (active_url, active_port,
-                                               active_resource,
-                                               active_container,
-                                               active_action)
+    resource_path = "http://{}:{}/{}/{}/{}".format(active_url, active_port,
+                                                   active_resource,
+                                                   active_container,
+                                                   active_action)
 
     rest_response = requests.post(url=resource_path)
     return rest_response
