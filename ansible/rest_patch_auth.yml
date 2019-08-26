@@ -1,0 +1,34 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+
+# Setting vars for this App 
+
+  vars:
+      destination_host: localhost
+      destination_port: 32768
+      netbox_token: 0123456789abcdef0123456789abcdef01234567
+  
+# Running tasks
+
+  tasks:
+      - name: REST API CALL / PATCH
+        uri:
+            url: http://{{ destination_host }}:{{ destination_port }}/{{ resource_path }}/{{ id }}/
+            method: PATCH
+            headers:
+                Authorization: "Token {{ netbox_token }}"
+            body_format: json
+            body:
+                status: 1
+                serial: "SN:00:11:22:33:44"
+                rack: 3
+                tags:
+                    - "pimped"
+        ignore_errors: yes
+        register: rest_post
+        vars:
+            resource_path: api/dcim/devices
+            id: 32
+...

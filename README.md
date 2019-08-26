@@ -5,6 +5,8 @@ This repo is crated as a source for the REST API blogpost series on the http://k
 - GET
 - POST
 - DELETE
+- PUT
+- PATCH
 
 ## Covered tools
 - Ansible (2.8)

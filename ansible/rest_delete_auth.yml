@@ -23,7 +23,7 @@
         register: rest_delete
         vars:
             resource_path: api/dcim/devices/
-            id: 22/
+            id: 28/
 
       - name: DEBUG / GOT INFO
         debug:

@@ -84,7 +84,7 @@
 			"response": []
 		},
 		{
-			"name": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}",
+			"name": "Partially update device in NetBox",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -104,21 +104,22 @@
 					"raw": "{\n\t\"name\": \"de-test-spine-333\",\n\t\"device_type\": 3,\n\t\"device_role\": 3,\n\t\"site\": 1,\n\t\"status\": 2\n}"
 				},
 				"url": {
-					"raw": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}",
+					"raw": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}/",
 					"protocol": "http",
 					"host": [
 						"{{destination_host}}"
 					],
 					"port": "{{destination_port}}",
 					"path": [
-						"{{resource_path}}"
+						"{{resource_path}}",
+						""
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}{{ID}}",
+			"name": "Delete device in NetBox",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -129,14 +130,88 @@
 					}
 				],
 				"url": {
-					"raw": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}{{ID}}",
+					"raw": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}/{{device_id}}/",
 					"protocol": "http",
 					"host": [
 						"{{destination_host}}"
 					],
 					"port": "{{destination_port}}",
 					"path": [
-						"{{resource_path}}{{ID}}"
+						"{{resource_path}}",
+						"{{device_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Partially update device in NetBox",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{netbox_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"status\": 1,\n\t\"serial\": \"SN:00:11:22:33:44\",\n\t\"rack\": 3,\n\t\"tags\": [\n\t\t\"pimped\"\n\t]\n}"
+				},
+				"url": {
+					"raw": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}/{{device_id}}/",
+					"protocol": "http",
+					"host": [
+						"{{destination_host}}"
+					],
+					"port": "{{destination_port}}",
+					"path": [
+						"{{resource_path}}",
+						"{{device_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update device in NetBox",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Token {{netbox_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"device_type\": 3,\n\t\"device_role\": 3,\n\t\"site\": 1,\n\t\"status\": 3\n}"
+				},
+				"url": {
+					"raw": "http://{{destination_host}}:{{destination_port}}/{{resource_path}}/{{device_id}}/",
+					"protocol": "http",
+					"host": [
+						"{{destination_host}}"
+					],
+					"port": "{{destination_port}}",
+					"path": [
+						"{{resource_path}}",
+						"{{device_id}}",
+						""
 					]
 				}
 			},
