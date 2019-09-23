@@ -34,3 +34,8 @@ For further details read the official articles at http://karneliuk.com/tag/rest-
 The REST API with Ansbile was extensivly used in the two my big projects:
 - Service Provider Fabric (https://github.com/akarneliuk/service_provider_fabric)
 - Data Centre Fabric (https://github.com/akarneliuk/data_center_fabric)
+
+# Do you want to automate network like a profi?
+Join the network automation course: http://training.karneliuk.com
+
+(c) 2016-2019 karneliuk.com
